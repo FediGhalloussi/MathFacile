@@ -19,13 +19,13 @@ services:
 
   wasm:
     image: emscripten/emsdk
-    working_dir: /
+    working_dir: /cpp
     volumes:
-      - ./cpp:/src  # Compile C++ vers WebAssembly depuis le dossier frontend
+      - ./cpp:/cpp
     command: >
       emcc 
-      src/core/exercises_generator.cpp 
-      src/core/exercises_loader.cpp 
+      core/exercises_generator.cpp 
+      core/exercises_loader.cpp 
       modules/linear/generator.cpp modules/linear/verifier.cpp 
       modules/derivative/generator.cpp modules/derivative/verifier.cpp 
       -Iinclude 

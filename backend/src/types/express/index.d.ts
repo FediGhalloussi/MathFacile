@@ -1,4 +1,4 @@
-import * as express from "express"
+import type { Request } from "express"; // Mandatory, dont remove !!!!
 
 declare global {
     namespace Express {
