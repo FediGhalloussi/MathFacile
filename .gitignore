@@ -39,6 +39,6 @@ cpp/cmake_install.cmake
 
 # .env
 backend/.env
-backend/.env.*
+backend/.env.production
 frontend/.env
-frontend/.env*
+frontend/.env.production
