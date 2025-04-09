@@ -7,6 +7,9 @@ RUN npm install
 
 COPY . .
 
+RUN test -f src/wasm/math.wasm.js
+RUN test -f src/wasm/math.wasm.wasm
+
 RUN npm run build
 
 EXPOSE 4173

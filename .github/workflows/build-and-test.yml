@@ -7,43 +7,38 @@ on:
     branches: [main]
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
       - name: 🧾 Checkout code
         uses: actions/checkout@v3
 
-      - name: ♻️ Cache node_modules
-        uses: actions/cache@v3
-        with:
-          path: |
-            **/node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-
-      - name: 🐳 Set up Docker Buildx
+      - name: 🐙 Set up Docker
         uses: docker/setup-buildx-action@v2
 
-      - name: 🐙 Set up Docker Compose
+      - name: 🧪 Copier les .env d'exemple
         run: |
-          sudo apt-get update
-          sudo apt-get install docker-compose -y
-
-      - name: 🧪 Copy .env files from example
-        run: |
-          cp frontend/.env.example frontend/.env
           cp backend/.env.example backend/.env
+          cp frontend/.env.example frontend/.env
 
-      - name: 📦 Build and start containers
-        run: |
-          docker-compose up --build -d
-          sleep 10  # ⏱ Attendre que les services soient prêts
+      - name: 🐳 Build WebAssembly (wasm)
+        run: docker-compose run --rm wasm
+
+      - name: 🛠️ Build frontend
+        run: docker-compose build frontend
+
+      - name: 🛠️ Build backend
+        run: docker-compose build backend
+
+      - name: ▶️ Lancer les services
+        run: docker-compose up -d backend frontend
 
       - name: 🧪 Run Vitest (unit tests)
         run: docker exec frontend npm run test:unit
 
-      - name: ✅ Check containers are up
+      - name: ✅ Check running containers
         run: docker ps
 
-      - name: 🧹 Shut down
+      - name: 🧹 Clean up
         run: docker-compose down
