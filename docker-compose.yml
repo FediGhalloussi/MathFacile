@@ -1,0 +1,39 @@
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - sqlite-data:/app/prisma  # Volume nommé pour la base SQLite
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - wasm
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "4173:4173"
+    env_file:
+      - ./frontend/.env
+
+  wasm:
+    image: emscripten/emsdk
+    working_dir: /
+    volumes:
+      - ./cpp:/src  # Compile C++ vers WebAssembly depuis le dossier frontend
+    command: >
+      emcc 
+      src/core/exercises_generator.cpp 
+      src/core/exercises_loader.cpp 
+      modules/linear/generator.cpp modules/linear/verifier.cpp 
+      modules/derivative/generator.cpp modules/derivative/verifier.cpp 
+      -Iinclude 
+      -o ../wasm/math.wasm.js 
+      -s MODULARIZE -s EXPORT_ES6 
+      -s EXPORTED_FUNCTIONS='["_generateExercise", "_verifyAnswer"]' 
+      -s EXPORTED_RUNTIME_METHODS='["ccall", "cwrap", "UTF8ToString", "_free"]'
+
+# Déclaration du volume nommé
+volumes:
+  sqlite-data:

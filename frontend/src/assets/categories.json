@@ -1,0 +1,37 @@
+{
+  "categories": [
+    {
+      "id": "ln-eqn",
+      "name": "Équations Linéaire",
+      "description": "Résoudre l'équation : ",
+      "icon" : "x+y=5",
+      "degree": 1
+    },
+    {
+      "id": "qd-eqn",
+      "name": "Équations Quadratique",
+      "description": "Résoudre l'équation : ",
+      "icon" : "x^2+y+1=5",
+      "degree": 2
+    },
+    {
+      "id": "deriv",
+      "name": "Dérivées",
+      "description": "Calculer la dérivée de f(x) = ",
+      "icon" : "f'(x)",
+      "degree": 2
+    },
+    {
+      "id": "int",
+      "name": "Intégrales",
+      "description": "Calculer l'intégrale de f(x) = ",
+      "icon" : "∫",
+      "degree": 2
+    },
+    {
+      "id": "stats",
+      "name": "Statistiques",
+      "icon" : "\uD83D\uDCCA"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "name": "math-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node_modules/.bin/vite",
+    "build": "node_modules/.bin/vue-tsc -b && vite build",
+    "preview": "node_modules/.bin/vite preview",
+    "test:unit": "node_modules/.bin/vitest",
+    "test:e2e": "node_modules/.bin/cypress open"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.2",
+    "animate.css": "^4.1.1",
+    "axios": "^1.8.4",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "katex": "^0.16.21",
+    "pinia": "^3.0.1",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0",
+    "vuex": "^4.0.2"
+  },
+  "devDependencies": {
+    "@testing-library/vue": "^8.1.0",
+    "@vitejs/plugin-vue": "^5.2.3",
+    "@vue/test-utils": "^2.4.6",
+    "@vue/tsconfig": "^0.7.0",
+    "autoprefixer": "^10.4.21",
+    "cypress": "^14.2.1",
+    "emscripten": "^0.0.2-beta",
+    "jsdom": "^26.0.0",
+    "postcss": "^8.5.3",
+    "supertest": "^7.1.0",
+    "tailwindcss": "^4.1.2",
+    "typescript": "~5.7.2",
+    "vite": "^6.2.4",
+    "vitest": "^3.1.1",
+    "vue-tsc": "^2.2.4"
+  }
+}

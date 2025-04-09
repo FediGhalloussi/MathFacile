@@ -1,0 +1,44 @@
+# 📦 Node.js / Vite / Frontend
+node_modules/
+dist/
+dist-ssr/
+build/
+*.local
+*.log
+*.env
+
+# 🧱 Backend (Express, Prisma, etc.)
+backend/node_modules/
+backend/dist/
+backend/build/
+backend/prisma/dev.db
+backend/prisma/migrations/
+
+# 🧰 IDE & OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ⚙️ C++ / WebAssembly / CMake
+cpp/build/
+cpp/CMakeFiles/
+cpp/MathExercises
+cpp/CMakeCache.txt
+cpp/cmake_install.cmake
+
+# 🔧 Emscripten output files
+*.wasm
+*.wasm.js
+*.wasm.data
+
+# .env
+backend/.env
+backend/.env.*
+frontend/.env
+frontend/.env*
