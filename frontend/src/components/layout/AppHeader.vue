@@ -6,7 +6,6 @@
       <img
           :src="logoImg"
           alt="Logo MathFacile"
-          loading="lazy"
           class="h-10 w-auto"
       />
       <span class="text-3xl font-bold text-white hidden sm:inline">MathsFacile</span>

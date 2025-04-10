@@ -18,7 +18,6 @@
       <img
           :src="laptopImg"
           alt="Laptop montrant des formules"
-          loading="lazy"
           class="max-w-[280px] md:max-w-[350px] w-full"
       />
       <div class="absolute top-10 right-6 md:right-24 py-2 px-4 text-3xl md:text-4xl font-mono text-gray-800 rotate-1 ">
