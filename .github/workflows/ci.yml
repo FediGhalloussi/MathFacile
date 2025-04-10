@@ -1,13 +1,13 @@
-name: 🚀 Build & Test with Docker
+name: 🧪 CI
 
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+  push:      # à chaque commit peu importe la branche
+    branches: ["*"]
+  pull_request:  # à chaque PR ouverte ou mise à jour
+
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -47,10 +47,7 @@ jobs:
       - name: 🧪 Run Vitest (unit tests)
         run: |
           FRONTEND_CONTAINER=$(docker ps --filter "ancestor=mathfacile_frontend" --format "{{.Names}}")
-          docker exec $FRONTEND_CONTAINER npm run test:unit
-
-      - name: ✅ Check running containers
-        run: docker ps
+          docker exec $FRONTEND_CONTAINER npm run test:unit -- --run
 
       - name: 🧹 Clean up
         run: docker-compose down
