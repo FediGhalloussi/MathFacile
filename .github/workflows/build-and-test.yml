@@ -45,7 +45,7 @@ jobs:
           docker-compose ps
 
       - name: 🧪 Run Vitest (unit tests)
-        run: docker exec frontend npm run test:unit
+        run: docker exec mathfacile_frontend npm run test:unit
 
       - name: ✅ Check running containers
         run: docker ps
