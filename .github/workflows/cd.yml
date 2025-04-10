@@ -18,6 +18,9 @@ jobs:
       - name: 🔐 Login to GHCR
         run: echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u ${{ secrets.GHCR_USERNAME }} --password-stdin
 
+      - name: 🐳 Compile WebAssembly (wasm)
+        run: docker-compose run --rm wasm
+
       - name: 🐳 Build & push backend image
         run: |
           docker build -t ghcr.io/${{ secrets.GHCR_USERNAME }}/mathfacile-backend:latest ./backend
