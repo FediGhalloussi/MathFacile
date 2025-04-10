@@ -43,8 +43,7 @@ export function useExercises() {
 
         let catId = typeof categoryId.value === 'string' ? categoryId.value : null;
         if (!catId || !categories.value.find(cat => cat.id === catId)) {
-            const random = categories.value[Math.floor(Math.random() * categories.value.length)];
-            catId = random.id;
+            catId = "ln-eqn";
             router.replace({ name: 'ExerciseCategory', params: { category: catId } });
             return;
         }
