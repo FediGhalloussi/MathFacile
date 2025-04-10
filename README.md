@@ -1,5 +1,8 @@
 # 🧮 MathFacile – Plateforme d'exercices mathématiques interactive
 
+![CI](https://github.com/FediGhalloussi/MathFacile/actions/workflows/ci.yml/badge.svg)
+[![Deploy Render](https://img.shields.io/badge/live%20on-Render-3e73c4?logo=render)](https://mathfacile-frontend-latest.onrender.com/)
+
 ![Aperçu du site](./frontend/public/HomePage_MathFacile.png)
 
 > Accès à l’application : [MathFacile](https://mathfacile-frontend-latest.onrender.com/)
