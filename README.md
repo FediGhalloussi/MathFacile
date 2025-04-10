@@ -2,7 +2,7 @@
 
 ![Aperçu du site](./frontend/public/HomePage_MathFacile.png)
 
-> Accès à l’application : [http://localhost:5173](http://localhost:5173)
+> Accès à l’application : [MathFacile](https://mathfacile-frontend-latest.onrender.com/)
 
 ---
 
@@ -29,7 +29,6 @@ L’objectif est double :
 | **KaTeX**       | Rendu élégant d'équations mathématiques |
 | **Cypress**     | 🔜 Tests end-to-end à venir |
 
-
 ### 🔙 Backend — Node.js + Express
 
 | Technologie       | Rôle |
@@ -40,7 +39,6 @@ L’objectif est double :
 | **Prisma ORM** + **SQLite** | Base de données typée, légère et intégrée |
 | **Structure MVC** | Contrôleurs, services, middleware : responsabilités bien séparées |
 
-
 ### 🧠 Génération d’exercices — C++ & WebAssembly
 
 | Composant | Description |
@@ -48,14 +46,31 @@ L’objectif est double :
 | **C++17 + Emscripten** | Compilation en WebAssembly pour exécution dans le navigateur |
 | **Modules indépendants** | Chaque type d’exercice est un module : `linear`, `quadratic`, `derivative`... |
 | **Architecture claire** |
-- `generator.cpp` : génère une question
-- `verifier.cpp` : vérifie la réponse + fournit la solution correcte
-- `exercises_loader.cpp` : centralise les types d'exercices disponibles
-- `exercises_generator.cpp` : oriente dynamiquement selon le type demandé |
-  | **TypeScript ↔ WebAssembly** | Intégration frontend via `wasmLoader.ts` |
-
+| `generator.cpp` : génère une question |
+| `verifier.cpp` : vérifie la réponse + fournit la solution correcte |
+| `exercises_loader.cpp` : centralise les types d'exercices disponibles |
+| `exercises_generator.cpp` : oriente dynamiquement selon le type demandé |
+| **TypeScript ↔ WebAssembly** | Intégration frontend via `wasmLoader.ts` |
 
 ---
+
+## ⚙️ CI/CD
+
+### 📦 Intégration continue (CI)
+Déclenchée à chaque push/pull request sur `main` :
+- Compile le WebAssembly (wasm)
+- Build les containers Docker (frontend + backend)
+- Lance les tests unitaires (Vitest)
+- S’assure que tout fonctionne correctement avant de valider la merge
+
+### 🚀 Déploiement continu (CD)
+Déclenché automatiquement **après une CI réussie sur `main`** :
+- Rebuild les images Docker
+- Push vers GitHub Container Registry (GHCR)
+- Render détecte les nouvelles images et redéploie automatiquement
+
+---
+
 ## 🏗️ Architecture du projet
 
 ```
@@ -72,7 +87,7 @@ math-app/
 │   │   └── types/utils/   → Types TypeScript et helpers
 │   └── server.ts          → Point d'entrée du serveur Express
 │
-├── src/                   → Frontend Vue 3 + TypeScript + Tailwind CSS
+├── frontend/               → Frontend Vue 3 + TypeScript + Tailwind CSS
 │   ├── components/        → Composants réutilisables
 │   ├── pages/             → Pages Vue pour chaque route
 │   ├── stores/            → Pinia (état global : auth, flash)
@@ -83,7 +98,7 @@ math-app/
 │   ├── wasm/              → Fichiers WebAssembly générés
 │   └── utils/             → wasmLoader.ts
 │
-├── src/cpp/               → Code C++ compilé en WebAssembly (exercices)
+├── cpp/                    → Code C++ compilé en WebAssembly (exercices)
 │   ├── core/              → Loader et orchestrateur de génération/vérification
 │   │   ├── exercises_generator.cpp/.h
 │   │   └── exercises_loader.cpp/.h
@@ -94,9 +109,11 @@ math-app/
 │
 ├── public/                → Fichiers publics accessibles (logo, favicon...)
 ├── README.md              → Documentation du projet (ce fichier)
+├── docker-compose.yml     → Stack de développement multi-services
 ├── vite.config.ts         → Config Vite
 └── tsconfig*.json         → Config TypeScript
 ```
+
 ---
 
 ## 📚 Fonctionnalités clés
@@ -107,6 +124,7 @@ math-app/
 - 🎯 Navigation fluide entre les exercices
 - 💡 Design responsive et moderne
 - 🧩 Architecture modulaire (backend, frontend, wasm, etc.)
+
 ---
 
 ## 🛣️ Objectifs pédagogiques atteints
@@ -134,7 +152,7 @@ math-app/
 ## 👨‍💻 Auteur
 
 **Fedi Ghalloussi**  
-Ingénieur logiciel junior passionné par le développement web,.  
+Ingénieur logiciel junior passionné par le développement web.  
 📎 [Portfolio](https://fedighalloussi.vercel.app)
 
 ---
