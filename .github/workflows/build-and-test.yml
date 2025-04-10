@@ -17,6 +17,11 @@ jobs:
       - name: 🐙 Set up Docker
         uses: docker/setup-buildx-action@v2
 
+      - name: 🛠️ Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
+
       - name: 🧪 Copier les .env d'exemple
         run: |
           cp backend/.env.example backend/.env
