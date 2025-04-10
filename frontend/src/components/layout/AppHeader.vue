@@ -4,8 +4,9 @@
     <!-- Logo -->
     <router-link to="/" class="flex items-center space-x-2">
       <img
-          src="@/assets/images/Logo_MathFacile.png"
+          :src="logoImg"
           alt="Logo MathFacile"
+          loading="lazy"
           class="h-10 w-auto"
       />
       <span class="text-3xl font-bold text-white hidden sm:inline">MathsFacile</span>
@@ -49,6 +50,7 @@
 <script setup lang="ts">
 import {useAuthStore} from '@/stores/auth.ts';
 import categoriesData from '@/assets/categories.json';
+import logoImg from '@/assets/images/Logo_MathFacile.png';
 import { useCategories } from '@/composables/useCategories';
 const authStore = useAuthStore();
 
