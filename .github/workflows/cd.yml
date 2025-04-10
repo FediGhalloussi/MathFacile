@@ -23,6 +23,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y docker-compose
 
+      - name: 🧪 Copier les .env d'exemple
+        run: |
+          cp backend/.env.example backend/.env
+          cp frontend/.env.example frontend/.env
+
       - name: 🐳 Compile WebAssembly (wasm)
         run: docker-compose run --rm wasm
 
