@@ -40,3 +40,8 @@ jobs:
         run: |
           docker build -t ghcr.io/${{ secrets.GHCR_USERNAME }}/mathfacile-frontend:latest ./frontend
           docker push ghcr.io/${{ secrets.GHCR_USERNAME }}/mathfacile-frontend:latest
+
+      - name: 📡 Call Render Webhook
+        run: |
+          curl -X POST ${{ secrets.RENDER_BACKEND_DEPLOY_HOOK_URL }}
+          curl -X POST ${{ secrets.RENDER_FRONTEND_DEPLOY_HOOK_URL }}
