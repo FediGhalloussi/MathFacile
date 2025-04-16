@@ -6,7 +6,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node src/server.ts",
     "build": "tsc",
-    "start" : "node dist/server.js"
+    "start": "node dist/server.js"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +24,7 @@
     "supertest": "^7.1.0"
   },
   "devDependencies": {
+    "@flydotio/dockerfile": "^0.7.10",
     "@testing-library/vue": "^8.1.0",
     "@types/cookie-parser": "^1.4.8",
     "@types/cors": "^2.8.17",
