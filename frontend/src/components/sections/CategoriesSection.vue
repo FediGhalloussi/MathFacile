@@ -24,7 +24,7 @@ const { categories } = useCategories();
 
 // TODO : Mettre le min entre le nb de colonnes prévu et le nombre d'éléments
 const gridClasses = computed(() =>
-    'grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6'
+    'grid grid-cols-1 sm:grid-cols-3 xl:grid-cols-5 gap-6'
 );
 
 const handleCategoryClick = (categoryId : string) => {

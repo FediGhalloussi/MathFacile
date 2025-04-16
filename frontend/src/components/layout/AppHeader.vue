@@ -1,6 +1,6 @@
 <template>
   <header
-      class="flex justify-between items-center pl-15 pr-15 pb-4 pt-4 border-b border-gray-300 bg-blue-950 rounded-t-2xl">
+      class="flex justify-between items-center md:px-15 px-5 pb-4 pt-4 border-b border-gray-300 bg-blue-950 rounded-t-2xl">
     <!-- Logo -->
     <router-link to="/" class="flex items-center space-x-2">
       <img
@@ -8,11 +8,11 @@
           alt="Logo MathFacile"
           class="h-10 w-auto"
       />
-      <span class="text-3xl font-bold text-white hidden sm:inline">MathsFacile</span>
+      <span class="text-xl md:text-3xl font-bold text-white sm:inline">MathsFacile</span>
     </router-link>
 
     <!-- Navigation -->
-    <nav class="flex space-x-6 md:space-x-10">
+    <nav class="hidden xl:flex space-x-6 md:space-x-10">
       <router-link
           v-for="category in categories"
           :key="category.id"

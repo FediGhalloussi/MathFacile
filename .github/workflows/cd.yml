@@ -1,4 +1,4 @@
-name: 🚀 CD
+name: 🚀 CD to Fly.io
 
 on:
   workflow_run:
@@ -12,36 +12,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🔽 Checkout
+      - name: 🔽 Checkout repository
         uses: actions/checkout@v3
 
-      - name: 🔐 Login to GHCR
-        run: echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u ${{ secrets.GHCR_USERNAME }} --password-stdin
+      - name: 🔐 Set up Fly.io credentials
+        uses: superfly/flyctl-actions/setup-flyctl@master
 
-      - name: 🛠 Install Docker Compose
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y docker-compose
+      - name: 🚀 Deploy Backend to Fly.io
+        run: flyctl deploy --config backend/fly.toml --remote-only
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 
-      - name: 🧪 Copier les .env d'exemple
-        run: |
-          cp backend/.env.example backend/.env
-          cp frontend/.env.example frontend/.env
-
-      - name: 🐳 Compile WebAssembly (wasm)
-        run: docker-compose run --rm wasm
-
-      - name: 🐳 Build & push backend image
-        run: |
-          docker build -t ghcr.io/${{ secrets.GHCR_USERNAME }}/mathfacile-backend:latest ./backend
-          docker push ghcr.io/${{ secrets.GHCR_USERNAME }}/mathfacile-backend:latest
-
-      - name: 🐳 Build & push frontend image
-        run: |
-          docker build -t ghcr.io/${{ secrets.GHCR_USERNAME }}/mathfacile-frontend:latest ./frontend
-          docker push ghcr.io/${{ secrets.GHCR_USERNAME }}/mathfacile-frontend:latest
-
-      - name: 📡 Call Render Webhook
-        run: |
-          curl -X POST ${{ secrets.RENDER_BACKEND_DEPLOY_HOOK_URL }}
-          curl -X POST ${{ secrets.RENDER_FRONTEND_DEPLOY_HOOK_URL }}
+      - name: 🚀 Deploy Frontend to Fly.io
+        run: flyctl deploy --config frontend/fly.toml --remote-only
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
