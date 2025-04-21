@@ -3,17 +3,17 @@ project(MathExercises)
 
 set(CMAKE_CXX_STANDARD 17)
 
-# Inclure les répertoires d'en-têtes
-include_directories(${CMAKE_SOURCE_DIR}/include)
 
 # Ajouter la bibliothèque JSON
 find_package(nlohmann_json CONFIG REQUIRED)
 
+include_directories(${PROJECT_SOURCE_DIR})
+
 # Ajouter tous les fichiers source
 set(SOURCES
-    src/main.cpp
-    src/loader.cpp
-    src/math_generator.cpp
+    main.cpp
+    modules/quadratic/generator.cpp
+    modules/quadratic/verifier.cpp
 )
 
 # Générer l'exécutable
