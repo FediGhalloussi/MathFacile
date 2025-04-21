@@ -13,6 +13,6 @@ export default defineConfig({
   preview: {
     port: 4173,
     host: true,
-    allowedHosts: ['mathfacile-frontend-latest.onrender.com'],
+    allowedHosts: ['mathfacile.fly.dev'],
   }
 });

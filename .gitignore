@@ -32,11 +32,6 @@ cpp/MathExercises
 cpp/CMakeCache.txt
 cpp/cmake_install.cmake
 
-# 🔧 Emscripten output files
-*.wasm
-*.wasm.js
-*.wasm.data
-
 # .env
 backend/.env
 backend/.env.production
