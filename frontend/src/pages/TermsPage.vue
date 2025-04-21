@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-blue-100 rounded-3xl m-4 shadow-lg flex flex-col min-h-screen">
+  <div class="min-h-[calc(100vh-2rem)] m-4 bg-blue-100 rounded-3xl shadow-lg flex flex-col">
     <AppHeader />
     <main role="main" class="flex-grow max-w-3xl mx-auto px-6 py-12 text-gray-800">
       <section class="space-y-6 bg-white p-6 rounded-2xl shadow-md">

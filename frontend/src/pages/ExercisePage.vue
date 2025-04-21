@@ -1,7 +1,7 @@
 <template>
-  <div class="bg-blue-100 rounded-3xl m-4 shadow-lg flex flex-col min-h-screen">
+  <div class="min-h-[calc(100vh-2rem)] m-4 bg-blue-100 rounded-3xl shadow-lg flex flex-col">
     <AppHeader />
-    <main class="flex-grow max-w-2xl mx-auto px-4 py-8 text-center">
+    <main class="flex-grow flex items-center justify-center max-w-2xl mx-auto px-4 py-8 text-center">
       <div class="bg-gray-100 py-10 px-6 sm:px-10 rounded-xl shadow-md">
         <h2 class="text-4xl font-bold text-blue-800 mb-6">Exercice</h2>
 
