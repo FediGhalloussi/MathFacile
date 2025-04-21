@@ -1,12 +1,13 @@
 <template>
-  <div class="bg-blue-100 rounded-3xl m-4 shadow-lg flex flex-col min-h-screen">
-    <AppHeader />
-    <main class="flex-grow max-w-2xl mx-auto px-4 py-8 text-center">
+  <div class="min-h-[calc(100vh-2rem)] m-4 bg-blue-100 rounded-3xl shadow-lg flex flex-col">
+    <AppHeader/>
+    <main class="flex-grow flex items-center justify-center max-w-2xl mx-auto px-4 py-8 text-center">
       <div class="bg-gray-100 py-10 px-6 sm:px-10 rounded-xl shadow-md">
         <h2 class="text-4xl font-bold text-blue-800 mb-6">Exercice</h2>
 
         <div v-if="currentExercise">
-          <div class="text-2xl text-gray-800 mb-6" v-html="currentExercise.text + '<br/>' + renderMath(currentExercise.question)" />
+          <div class="text-2xl text-gray-800 mb-6"
+               v-html="currentExercise.text + '<br/>' + renderMath(currentExercise.question)"/>
 
           <div class="flex flex-col items-center space-y-4">
             <label for="answer" class="sr-only">Votre réponse</label>
@@ -52,22 +53,35 @@
         </div>
 
         <div v-else>
-          <div v-if="loadingError" class="text-2xl text-gray-800 mb-6">{{ loadingError }}</div>
+          <div v-if="loadingError" class="flex flex-col items-center justify-center text-center space-y-4 py-8">
+            <div class="text-6xl animate-bounce">🚧</div>
+            <h2 class="text-3xl font-bold text-red-600">Une erreur est survenue</h2>
+            <p class="text-lg text-gray-800 max-w-md">{{ loadingError }}</p>
+            <div class="flex flex-col items-center space-y-4">
+              <button
+                  @click="goBack"
+                  class="px-6 py-2 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition-colors duration-300 cursor-pointer"
+              >
+                Retour à la page précédente
+              </button>
+            </div>
+          </div>
           <div v-else class="text-xl text-gray-600">Chargement de l'exercice...</div>
         </div>
       </div>
     </main>
-    <AppFooter />
+    <AppFooter/>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted } from 'vue';
+import {computed, onMounted, onUnmounted} from 'vue';
 import AppHeader from '@/components/layout/AppHeader.vue';
 import AppFooter from '@/components/layout/AppFooter.vue';
-import { useExercises } from '@/composables/useExercises';
+import {useExercises} from '@/composables/useExercises';
 import katex from 'katex';
 import 'katex/dist/katex.min.css';
+import router from "@/router";
 
 const {
   currentExercise,
@@ -85,13 +99,13 @@ const {
 } = useExercises();
 
 const renderMath = (equation: string) => {
-  return katex.renderToString(equation, { throwOnError: false });
+  return katex.renderToString(equation, {throwOnError: false});
 };
 
 const renderedFeedback = computed(() => {
   let res = feedback.value;
   if (!isCorrect.value) {
-    res += katex.renderToString(expectedResult.value, { throwOnError: false });
+    res += katex.renderToString(expectedResult.value, {throwOnError: false});
   }
   return res;
 });
@@ -108,6 +122,10 @@ const onGlobalKeyDown = (event: KeyboardEvent) => {
   if (event.key === 'Enter') {
     handleEnter();
   }
+};
+
+const goBack = () => {
+  router.back();
 };
 
 onMounted(() => {

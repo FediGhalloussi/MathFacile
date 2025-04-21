@@ -28,7 +28,7 @@ services:
       - ./cpp/nlohmann:/nlohmann
       - ./frontend/src/wasm:/wasm
     command: >
-      bash -c "emcc core/exercises_generator.cpp core/exercises_loader.cpp modules/linear/generator.cpp modules/linear/verifier.cpp modules/derivative/generator.cpp modules/derivative/verifier.cpp -Iinclude -I. -Icore -Imodules/linear -Imodules/derivative -I/nlohmann -o /wasm/math.wasm.js -s MODULARIZE=1 -s EXPORT_ES6=1 -s EXPORTED_FUNCTIONS='[\"_generateExercise\", \"_verifyAnswer\"]' -s EXPORTED_RUNTIME_METHODS='[\"ccall\", \"cwrap\", \"UTF8ToString\", \"_free\"]'"
+      bash -c "emcc core/exercises_generator.cpp core/exercises_loader.cpp modules/linear/generator.cpp modules/linear/verifier.cpp modules/derivative/generator.cpp modules/derivative/verifier.cpp modules/quadratic/generator.cpp modules/quadratic/verifier.cpp -Iinclude -I. -Icore -Imodules/linear -Imodules/derivative -I/nlohmann -o /wasm/math.wasm.js -s MODULARIZE=1 -s EXPORT_ES6=1 -s EXPORTED_FUNCTIONS='[\"_generateExercise\", \"_verifyAnswer\"]' -s EXPORTED_RUNTIME_METHODS='[\"ccall\", \"cwrap\", \"UTF8ToString\", \"_free\"]'"
 
 
 # Déclaration du volume nommé

@@ -26,7 +26,7 @@ backend/prisma/migrations/
 *.sw?
 
 # ⚙️ C++ / WebAssembly / CMake
-cpp/build/
+cpp/build-output/
 cpp/CMakeFiles/
 cpp/MathExercises
 cpp/CMakeCache.txt
