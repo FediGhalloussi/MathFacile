@@ -31,7 +31,9 @@ extern "C" char* generateExercise(const char* exerciseName) {
     if (name == "ln-eqn") {
         result = generateLinearEquation();
     } else if (name == "deriv") {
-        result = generateDerivativeExercise();
+             result = generateDerivativeExercise();
+    }  else if (name == "qd-eqn") {
+       result = generateQuadraticEquation();
     } else {
         result = "Exercice non reconnu";
     }
