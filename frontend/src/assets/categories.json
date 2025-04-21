@@ -24,7 +24,7 @@
     {
       "id": "int",
       "name": "Intégrales",
-      "description": "Calculer l'intégrale de f(x) = ",
+      "description": "Calculer la primitive de f(x) = ",
       "icon" : "∫",
       "degree": 2
     },

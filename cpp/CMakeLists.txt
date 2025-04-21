@@ -14,6 +14,8 @@ set(SOURCES
     main.cpp
     modules/quadratic/generator.cpp
     modules/quadratic/verifier.cpp
+    modules/integral/generator.cpp
+    modules/integral/verifier.cpp
 )
 
 # Générer l'exécutable
